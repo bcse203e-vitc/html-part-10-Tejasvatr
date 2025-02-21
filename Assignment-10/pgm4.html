@@ -1,0 +1,41 @@
+<html>
+<head>
+    <title>Tejasvat</title>
+</head>
+<body>
+    <h1>Multiplication table</h1>
+
+    <form id="multiplicationForm">
+            <legend>Enter a Number</legend>
+            <label for="num">Number: </label>
+            <input type="number" id="num" min="1" max="100" required>
+            <button type="button" onclick="generateTable()">Generate Table</button>
+    </form>
+
+    <h3>Multiplication Table:</h3>
+    <table id="mul">
+        <thead>
+            <tr>
+                <th>Multiplier</th>
+                <th>Result</th>
+            </tr>
+        </thead>
+        <tbody>
+        </tbody>
+    </table>
+    <script>
+        function generateTable() {
+            let number = document.getElementById('num').value;
+            let tableBody = document.getElementById('mul').getElementsByTagName('tbody')[0];
+            tableBody.innerHTML = '';
+            for (let i = 1; i <= 10; i++) {
+                let row = tableBody.insertRow();
+                let cell1 = row.insertCell(0);
+                let cell2 = row.insertCell(1);
+                cell1.textContent = `${number} x ${i}`;
+                cell2.textContent = number * i;
+            }
+        }
+    </script>
+</body>
+</html>
