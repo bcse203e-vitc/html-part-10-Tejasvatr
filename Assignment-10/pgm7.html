@@ -1,0 +1,31 @@
+<html>
+<head>
+    <title>Tejasvat</title>
+</head>
+<body>
+    <h1>Counter</h1>
+    <textarea id="text" rows="6" cols="50"></textarea>
+
+    <div id="counter">
+        <p>Character count: <span id="char">0</span></p>
+        <p>Word count: <span id="word">0</span></p>
+    </div>
+
+    <script>
+        const textInput = document.getElementById('text');
+        const charCount = document.getElementById('char');
+        const wordCount = document.getElementById('word');
+        textInput.addEventListener('input', function() {
+            let text = textInput.value;
+
+            charCount.textContent = text.length;
+            let words = text.trim().split(/\s+/).filter(word => word.length > 0);
+            wordCount.textContent = words.length;
+            if (text.length > 200) {
+                alert('You have exceeded 200 characters');
+            }
+        });
+    </script>
+
+</body>
+</html>
