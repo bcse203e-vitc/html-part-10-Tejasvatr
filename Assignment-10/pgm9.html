@@ -1,0 +1,67 @@
+<html>
+<head>
+    <title>Tejasvat</title>
+    <style>
+        #canvas {
+            border: 1px solid #000;
+        }
+    </style>
+</head>
+<body>
+    <h1>Simple Drawing App</h1>
+    <canvas id="canvas" width="500" height="400"></canvas>
+
+    <div class="controls">
+        <label for="colorPicker">Color:</label>
+        <input type="color" id="colorPicker" value="#000000">
+        
+        <label for="brushSize">Brush Size:</label>
+        <input type="range" id="brushSize" min="1" max="10" value="5">
+        
+        <button onclick="clearCanvas()">Clear Canvas</button>
+    </div>
+
+    <script>
+        const canvas = document.getElementById('canvas');
+        const ctx = canvas.getContext('2d');
+
+        let painting = false;
+        let brushColor = '#000000';
+        let brushSize = 5;
+
+        canvas.addEventListener('mousedown', startDrawing);
+        canvas.addEventListener('mousemove', draw);
+        canvas.addEventListener('mouseup', stopDrawing);
+        canvas.addEventListener('mouseout', stopDrawing);
+        function startDrawing(e) {
+            painting = true;
+            draw(e); 
+        }
+        function stopDrawing() {
+            painting = false;
+            ctx.beginPath(); 
+        }
+        function draw(e) {
+            if (!painting) return;
+
+            ctx.lineWidth = brushSize;
+            ctx.lineCap = 'round';
+            ctx.strokeStyle = brushColor;
+            ctx.lineTo(e.clientX - canvas.offsetLeft, e.clientY - canvas.offsetTop);
+            ctx.stroke();
+            ctx.beginPath();
+            ctx.moveTo(e.clientX - canvas.offsetLeft, e.clientY - canvas.offsetTop);
+        }
+        function clearCanvas() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+        }
+        document.getElementById('colorPicker').addEventListener('input', function(e) {
+            brushColor = e.target.value;
+        });
+        document.getElementById('brushSize').addEventListener('input', function(e) {
+            brushSize = e.target.value;
+        });
+    </script>
+
+</body>
+</html>
