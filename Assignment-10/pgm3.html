@@ -1,0 +1,36 @@
+
+<html>
+<head>
+    <title>Tejasvat</title>
+</head>
+<body>
+    <h1>Pizza Order Form</h1>
+    
+    <form id="pizzaForm">
+        <h3>Choose Pizza Size:</h3>
+        <input type="radio" id="small" name="size" value="Small"> Small
+        <input type="radio" id="medium" name="size" value="Medium"> Medium
+        <input type="radio" id="large" name="size" value="Large"> Large
+
+        <h3>Choose Toppings:</h3>
+        <input type="checkbox" id="cheese" value="Cheese"> Cheese
+        <input type="checkbox" id="pepperoni" value="Pepperoni"> Pepperoni
+        <br><br>
+        <button type="button" onclick="show()">Submit Order</button>
+    </form>
+
+    <h3>Order Summary:</h3>
+    <p id="summary"></p>
+
+    <script>
+        function show() {
+            let size = document.querySelector('input[name="size"]:checked');
+            let toppings = [];
+            if (document.getElementById('cheese').checked) toppings.push('Cheese');
+            if (document.getElementById('pepperoni').checked) toppings.push('Pepperoni');
+            let summaryText = `Size: ${size ? size.value : 'No size selected'}<br>Toppings: ${toppings.length > 0 ? toppings.join(', ') : 'No toppings selected'}`;
+            document.getElementById('summary').innerHTML = summaryText;
+        }
+    </script>
+</body>
+</html>
