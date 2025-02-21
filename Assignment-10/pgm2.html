@@ -1,0 +1,25 @@
+
+<html>
+<head>
+    <title>Tejasvat</title>
+</head>
+<body>
+    <h1>Click a Button to Change Background Color</h1>
+    
+    <button id="redButton">Red</button>
+    <button id="blueButton">Blue</button>
+
+    <script>
+        let redButton = document.getElementById('redButton');
+        let blueButton = document.getElementById('blueButton');
+
+     
+        redButton.addEventListener('click', function() {
+            document.body.style.backgroundColor = 'red'; 
+        });
+        blueButton.addEventListener('click', function() {
+            document.body.style.backgroundColor = 'blue'; 
+        });
+    </script>
+</body>
+</html>
