@@ -1,0 +1,44 @@
+<html>
+<head>
+    <title>Tejasvat</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+    
+        .dmode {
+            background-color: #121212;
+            color: #ffffff;
+            font-size: 18px;
+        }
+        .lmode {
+            background-color: #ffffff;
+            color: #000000;
+            font-size: 18px;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            margin: 10px;
+        }
+    </style>
+</head>
+<body class="lmode">
+    <h1>Themes</h1>
+    <button onclick="setDark()">Dark Mode</button>
+    <button onclick="setLight()">Light Mode</button>
+
+    <script>
+        function setDark() {
+            document.body.classList.remove('lmode');
+            document.body.classList.add('dmode');
+        }
+
+        function setLight() {
+            document.body.classList.remove('dmode');
+            document.body.classList.add('lmode');
+        }
+    </script>
+</body>
+</html>
