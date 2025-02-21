@@ -1,0 +1,33 @@
+<html>
+<head>
+    <title>Tejasvat</title>
+</head>
+<body>
+    <h1>Number Guessing Game</h1>
+    <p>Guess a number between 1 and 50</p>
+    <input type="number" id="input" placeholder="Enter your guess" />
+    <button onclick="start()">Guess</button>
+    <p id="message"></p>
+    <script>
+        let targetNumber = Math.floor(Math.random() * 50) + 1;
+
+        function start() {
+            let guess;
+            let message = document.getElementById("message");
+            guess = parseInt(document.getElementById("input").value);
+            if (isNaN(guess)) {
+                message.textContent = "Please enter a valid number.";
+                return; 
+            }
+
+            if (guess < targetNumber) {
+                message.textContent = "Too low, Try again.";
+            } else if (guess > targetNumber) {
+                message.textContent = "Too high, Try again.";
+            } else {
+                message.textContent = "Ypu guessed the correct number";
+            }
+        }
+    </script>
+</body>
+</html>
